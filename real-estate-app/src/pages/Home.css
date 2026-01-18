@@ -1,0 +1,111 @@
+/* ===== HERO SECTION ===== */
+.home-hero {
+  height: 100vh;
+  width: 100%;
+  background-image: url("https://images.unsplash.com/photo-1505691938895-1758d7feb511");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== DARK OVERLAY ===== */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* ===== CONTENT ===== */
+.home-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== TITLE ===== */
+.home-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* ===== TAGLINE ===== */
+.home-tagline {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  opacity: 0.9;
+  animation: floatText 3.5s ease-in-out infinite;
+}
+
+/* ===== SUBTITLE ===== */
+.home-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  opacity: 0.95;
+  animation: floatText 4.5s ease-in-out infinite;
+}
+
+/* ===== TRUST LINE ===== */
+.home-trust {
+  font-size: 0.95rem;
+  margin-bottom: 35px;
+  opacity: 0.85;
+  animation: floatText 5.5s ease-in-out infinite;
+}
+
+/* ===== BUTTON ===== */
+.home-button {
+  background: white;
+  color: #004aad;
+  border: none;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.home-button:hover {
+  background: #004aad;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ===== FLOATING ANIMATION (FORWARD ↔ BACKWARD) ===== */
+@keyframes floatText {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2.4rem;
+  }
+
+  .home-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .home-tagline {
+    font-size: 1rem;
+  }
+}

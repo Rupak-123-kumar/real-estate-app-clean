@@ -1,0 +1,78 @@
+/* ===== LOGIN PAGE ===== */
+.login-container {
+  max-width: 400px;
+  margin: 90px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #004aad;
+  font-size: 24px;
+}
+
+/* ===== FORM ===== */
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form input {
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #004aad;
+  box-shadow: 0 0 0 2px rgba(0, 74, 173, 0.15);
+}
+
+/* ===== BUTTON ===== */
+.login-form button {
+  padding: 12px;
+  background-color: #004aad;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #00337a;
+}
+
+/* ===== FOOTER LINKS ===== */
+.login-footer {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-footer a {
+  color: #004aad;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .login-container {
+    margin: 60px 15px;
+    padding: 25px;
+  }
+}

@@ -1,0 +1,130 @@
+/* ================= PAGE ================= */
+.listings-page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f0f8ff, #ffffff);
+  padding: 30px 40px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ================= HEADING ================= */
+.listings-heading {
+  font-size: 2.2rem;
+  color: #1e3a8a;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* ================= FILTER BAR ================= */
+.filter-bar {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.filter-bar input,
+.filter-bar select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.filter-bar input {
+  width: 220px;
+}
+
+.filter-bar select {
+  width: 160px;
+}
+
+/* ================= GRID ================= */
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+/* ================= CARD ================= */
+.property-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: left;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInCard 0.4s ease forwards;
+}
+
+.property-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= IMAGE ================= */
+.property-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 12px;
+  background-color: #e5e7eb;
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.4s ease;
+}
+
+.property-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ================= TEXT ================= */
+.property-card h3 {
+  font-size: 1.2rem;
+  color: #1e3a8a;
+  margin-bottom: 6px;
+}
+
+.property-card p {
+  margin: 4px 0;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+/* ================= FADE ANIMATION ================= */
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .listings-page {
+    padding: 20px;
+  }
+
+  .listings-heading {
+    font-size: 1.8rem;
+  }
+
+  .filter-bar input,
+  .filter-bar select {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .property-card img {
+    height: 180px;
+  }
+}
