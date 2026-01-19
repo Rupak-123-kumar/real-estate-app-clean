@@ -5,14 +5,14 @@ import "./Contact.css";
 const Contact = () => {
   const [result, setResult] = useState("");
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
+  const onSubmit = async (e) => {
+    e.preventDefault();
     setResult("Sending...");
 
-    const formData = new FormData(event.target);
+    const formData = new FormData(e.target);
     formData.append(
       "access_key",
-      "bb2e55b8-c821-4bbe-9c27-c80bd20d45ce" // your Web3Forms key
+      "bb2e55b8-c821-4bbe-9c27-c80bd20d45ce"
     );
 
     try {
@@ -25,100 +25,72 @@ const Contact = () => {
 
       if (data.success) {
         setResult("✅ Message sent successfully!");
-        event.target.reset();
+        e.target.reset();
       } else {
-        setResult("❌ Something went wrong. Try again.");
+        setResult("❌ Something went wrong.");
       }
-    } catch (error) {
-      setResult("❌ Network error. Please try later.");
+    } catch (err) {
+      setResult("❌ Network error. Try again later.");
     }
   };
 
   return (
     <div className="contact-container">
-      {/* Animated Heading */}
       <motion.h2
         className="contact-title"
-        initial={{ opacity: 0, y: -40 }}
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
       >
         Get in Touch ✉️
       </motion.h2>
 
-      {/* Subtitle */}
       <motion.p
         className="contact-subtitle"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 1 }}
+        transition={{ delay: 0.2 }}
       >
-        We'd love to hear from you! Fill out the form below and our team will
-        reach out soon.
+        We'd love to hear from you. Fill out the form and we’ll reach out soon.
       </motion.p>
 
-      {/* Contact Form */}
       <motion.form
         className="contact-form"
         onSubmit={onSubmit}
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 1 }}
+        transition={{ delay: 0.3 }}
       >
         <div className="form-group">
           <label>Full Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your full name"
-            required
-          />
+          <input type="text" name="name" required />
         </div>
 
         <div className="form-group">
           <label>Email Address</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-          />
+          <input type="email" name="email" required />
         </div>
 
         <div className="form-group">
           <label>Message</label>
-          <textarea
-            name="message"
-            rows="5"
-            placeholder="Type your message..."
-            required
-          ></textarea>
+          <textarea name="message" required />
         </div>
 
         <motion.button
           type="submit"
           className="contact-button"
-          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           Send Message
         </motion.button>
 
-        {/* Result Message */}
         {result && <p className="form-result">{result}</p>}
       </motion.form>
 
-      {/* Contact Info */}
-      <motion.div
-        className="contact-info"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 1 }}
-      >
-        <p>📍 NIMS University, Jaipur, India</p>
+      <div className="contact-info">
+        <p>📍 NIMS University, Jaipur</p>
         <p>📞 +91 6299361809</p>
         <p>📧 rupakk746@gmail.com</p>
-      </motion.div>
+      </div>
     </div>
   );
 };
