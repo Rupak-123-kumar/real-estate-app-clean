@@ -14,6 +14,7 @@ const Listings = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // 🔹 Handle filter input change
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
 
@@ -23,23 +24,31 @@ const Listings = () => {
     }));
   };
 
-  // 🔹 Fetch properties (default + filtered)
+  // 🔹 Fetch properties from BACKEND (localhost)
   useEffect(() => {
     setLoading(true);
 
     axios
       .get("http://localhost:5000/api/properties", {
+        // 👆 BACKEND runs on PORT 5000
+        // 👆 React runs on PORT 3000
         params: {
+          // Send only when value exists
           location: filters.location || undefined,
           price: filters.price || undefined,
         },
       })
       .then((res) => {
-        // backend may return { properties }
-        const data = res.data.properties || res.data;
-        setProperties(data);
+        console.log("API RESPONSE:", res.data); // 👈 DEBUG (IMPORTANT)
+
+        // Backend response format:
+        // { count: X, properties: [...] }
+        setProperties(res.data.properties || []);
       })
-      .catch((err) => console.error("API ERROR:", err))
+      .catch((err) => {
+        console.error("API ERROR:", err);
+        setProperties([]);
+      })
       .finally(() => setLoading(false));
   }, [filters]);
 
@@ -58,16 +67,17 @@ const Listings = () => {
         🏘 Available Properties
       </motion.h2>
 
+      {/* 🔹 Filter bar */}
       <FilterBar filters={filters} onFilterChange={handleFilterChange} />
 
-      {/* Status */}
+      {/* 🔹 Status */}
       <p style={{ marginTop: "15px", color: "#555" }}>
         {loading
           ? "Loading properties..."
           : `${properties.length} properties found`}
       </p>
 
-      {/* Results */}
+      {/* 🔹 Property list */}
       <div className="property-grid">
         {!loading && properties.length === 0 && (
           <p style={{ gridColumn: "1 / -1", color: "#999" }}>
