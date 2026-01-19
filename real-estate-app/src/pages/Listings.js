@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
+
 import PropertyCard from "../components/PropertyCard";
 import FilterBar from "../components/FilterBar";
+import { API_BASE_URL } from "../config"; // 👈 IMPORTANT
 import "./Listings.css";
 
 const Listings = () => {
@@ -24,25 +26,19 @@ const Listings = () => {
     }));
   };
 
-  // 🔹 Fetch properties from BACKEND (localhost)
+  // 🔹 Fetch properties from backend (LOCAL + RENDER)
   useEffect(() => {
     setLoading(true);
 
     axios
-      .get("http://localhost:5000/api/properties", {
-        // 👆 BACKEND runs on PORT 5000
-        // 👆 React runs on PORT 3000
+      .get(`${API_BASE_URL}/api/properties`, {
         params: {
-          // Send only when value exists
           location: filters.location || undefined,
           price: filters.price || undefined,
         },
       })
       .then((res) => {
-        console.log("API RESPONSE:", res.data); // 👈 DEBUG (IMPORTANT)
-
-        // Backend response format:
-        // { count: X, properties: [...] }
+        console.log("API RESPONSE:", res.data); // DEBUG
         setProperties(res.data.properties || []);
       })
       .catch((err) => {
